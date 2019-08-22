@@ -4,10 +4,30 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 <!--    适配器-->
-    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
-<!--    映射器-->
-    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+<!--    Handler需要实现HttpRequestHandler接口-->
+    <bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter"/>
+<!--    Handler需要实现Controller接口-->
+<!--    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>-->
+
 <!--    视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"/>
-    <bean name="/queryFruits_test.action" class="com.rony.controller.FruitsController"/>
+        <!--    映射器-->
+
+<!--    SimpleUrl方式-->
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="/queryFruits_test1.action"> fruitsController</prop>
+                <prop key="/queryFruits_testrony.action"> fruitsController</prop>
+            </props>
+        </property>
+    </bean>
+        <!--    Handler-->
+    <bean id="fruitsController" class="com.rony.controller.FruitsController"/>
+
+<!--  *************************BeanNameUrl方式********************************  -->
+<!--    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>-->
+<!--    <bean name="/queryFruits_test.action" class="com.rony.controller.FruitsController"/>-->
+
+
 </beans>
