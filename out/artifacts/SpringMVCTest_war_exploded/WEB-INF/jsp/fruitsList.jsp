@@ -13,6 +13,11 @@
 </head>
 <body>
     <table border="1">
+        <tr>
+            <th>水果名</th>
+            <th>水果价格</th>
+            <th>水果产地</th>
+        </tr>
         <c:forEach items="${fruitsList}" var="fruits">
             <tr>
                 <td>${fruits.name}</td>

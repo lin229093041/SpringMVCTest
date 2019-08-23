@@ -12,5 +12,14 @@
   </head>
   <body>
   $END$
+    <form action="rony/testTwo.action">
+<%--      <input type="text" name="fruits.name">--%>
+<%--      <input type="text" name="fruits.price">--%>
+<%--      <input type="text" name="list[0].name">--%>
+<%--      <input type="text" name="list[0].price">--%>
+      <input type="text" name="map['name']">
+      <input type="text" name="map['price']">
+      <input type="submit">
+    </form>
   </body>
 </html>
