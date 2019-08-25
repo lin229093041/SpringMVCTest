@@ -1,8 +1,18 @@
 package com.rony.pojo;
 
+import com.rony.controller.ValidationB;
+import com.rony.controller.VallidationA;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.Size;
+
 public class Fruits {
+//    校验name的长度是否为5~10之间
+//    @Size(min = 5,max = 10,message = "{fruits.name.length.error}")
+    @Size(min = 3,max = 10,message = "{fruits.name.length.error}" ,groups = {VallidationA.class})
     private String name;
     private double price;
+    @NotEmpty(message = "{fruits.produce.area.isEmpty}",groups = {ValidationB.class})
     private String producing_area;
 
     @Override
@@ -47,3 +57,4 @@ public class Fruits {
         this.producing_area = producing_area;
     }
 }
+

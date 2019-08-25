@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
+        <property name="validationMessageSource" ref="messageSource"/>
+    </bean>
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>classpath:validation_config</value>
+            </list>
+        </property>
+<!--        要两个一起写才行，否则还是乱码-->
+        <property name="fileEncodings" value="utf-8"/>
+        <property name="defaultEncoding" value="utf-8"/>
+<!--        内容缓存时间120s-->
+        <property name="cacheSeconds" value="120"/>
+    </bean>
+    <mvc:annotation-driven conversion-service="conversionService" validator="validator"/>
+<!--    <mvc:annotation-driven></mvc:annotation-driven>-->
+<!--    开启扫描包-->
+    <context:component-scan base-package="com.rony.controller"/>
+<!--    使用该bean来对前台传来的日期和数字类型作类型转换-->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"/>
+</beans>

@@ -12,13 +12,21 @@
   </head>
   <body>
   $END$
-    <form action="rony/testTwo.action">
+<%--    <form action="rony/testTwo.action">--%>
+<%--    <form action="validation_test.action">--%>
+    <form action="user.action">
+        <input type="text" name="name">
+        <input type="text" name="pwd">
+<%--        <input type="text" name="name">--%>
+<%--        <input type="text" name="price">--%>
+<%--        <input type="text" name="producing_area">--%>
 <%--      <input type="text" name="fruits.name">--%>
 <%--      <input type="text" name="fruits.price">--%>
+<%--        <input type="text" name="fruits.producing_area">--%>
 <%--      <input type="text" name="list[0].name">--%>
 <%--      <input type="text" name="list[0].price">--%>
-      <input type="text" name="map['name']">
-      <input type="text" name="map['price']">
+<%--      <input type="text" name="map['name']">--%>
+<%--      <input type="text" name="map['price']">--%>
       <input type="submit">
     </form>
   </body>

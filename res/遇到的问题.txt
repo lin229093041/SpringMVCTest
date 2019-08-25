@@ -1,1 +1,4 @@
 注意jstl的版本问题，不同版本可能会导致EL表达式不能正常使用
+2、在使用validation功能时，需要注意hibernate、jboss、validation三个 包的版本问题
+3、乱码问题 ，需要在配置文件中配置两个property才行
+4、使用validation配置 文件的时候，要注意文件的编码，如果用的utf-8，则不建议使用第一行
