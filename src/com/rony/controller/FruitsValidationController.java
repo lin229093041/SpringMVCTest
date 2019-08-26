@@ -38,6 +38,7 @@ public class FruitsValidationController {
     @RequestMapping("/user")
     public String findUser(Model model, @Valid User user, BindingResult bindingResult){
         System.out.println("user  validation");
+        int x=10/0;
         if (bindingResult.hasErrors()){
             for (ObjectError e: bindingResult.getAllErrors()
                  ) {

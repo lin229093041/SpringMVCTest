@@ -27,4 +27,13 @@
     <context:component-scan base-package="com.rony.controller"/>
 <!--    使用该bean来对前台传来的日期和数字类型作类型转换-->
     <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"/>
+<!--    异常处理器-->
+    <bean class="com.rony.resolver.MyException"/>
+<!--    拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.rony.interceptor.MyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>
